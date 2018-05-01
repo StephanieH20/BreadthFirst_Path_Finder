@@ -5,8 +5,7 @@ public void BF_findPath(T[][] maze, int startRow, int startCol, int endRow, int 
     ArrayList<ArrayList<String>> stepSet = new ArrayList<>();
     int[] rowDir = {1, -1, 0, 0};  //Down, up, left, right
     int[] colDir = {0, 0, -1, 1};
-   
-		ArrayList<String> start = new ArrayList<>();
+    ArrayList<String> start = new ArrayList<>();
 		start.add("Start");
 		stepSet.add(start);
 		rows.add(startRow);
@@ -36,7 +35,7 @@ public void BF_findPath(T[][] maze, int startRow, int startCol, int endRow, int 
 					if(i == 0) direction = "Down";
 					else if(i == 1) direction = "Up";
 					else if(i == 2) direction = "Left";
-					else if(i == 3) direction = "Right"; // i = 3
+					else direction = "Right"; // i = 3
 					
 					ArrayList<String> newSteps = new ArrayList<>();
 					for(int j = 0; j < previous.size(); j++) {
