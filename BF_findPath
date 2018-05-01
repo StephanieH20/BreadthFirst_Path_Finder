@@ -3,7 +3,7 @@ public void BF_findPath(T[][] maze, int startRow, int startCol, int endRow, int 
     ArrayList<Integer> rows = new ArrayList<>();
     ArrayList<Integer> columns = new ArrayList<>();
     ArrayList<ArrayList<String>> stepSet = new ArrayList<>();
-    int[] rowDir = {1, -1, 0, 0};
+    int[] rowDir = {1, -1, 0, 0};  //Down, up, left, right
     int[] colDir = {0, 0, -1, 1};
    
 		ArrayList<String> start = new ArrayList<>();
