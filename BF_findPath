@@ -6,51 +6,51 @@ public void BF_findPath(T[][] maze, int startRow, int startCol, int endRow, int 
     int[] rowDir = {1, -1, 0, 0};  //Down, up, left, right
     int[] colDir = {0, 0, -1, 1};
     ArrayList<String> start = new ArrayList<>();
-		start.add("Start");
-		stepSet.add(start);
-		rows.add(startRow);
-		columns.add(startCol);
+    start.add("Start");
+    stepSet.add(start);
+    rows.add(startRow);
+    columns.add(startCol);
 		
-		while(rows.size() > 0 && columns.size() > 0) {
-			int row = rows.remove(0);
-			int col = columns.remove(0);
-			visited[row][col] = true;
-			ArrayList<String> previous = new ArrayList<>();
-			ArrayList<String> threshold = stepSet.remove(0);
-			for(int i = 0; i < threshold.size(); i++) {
-				previous.add(threshold.get(i));
-			}
-			if(row == endRow && col == endCol) {
-				System.out.println(previous);
-				return;
-			}
-			for(int i = 0; i < rowDir.length; i++) {
-				String direction = ""; 
-				int rNext = row + rowDir[i];
-				int cNext = col + colDir[i];
-				if(rNext >= 0 && rNext < maze.length && cNext >= 0 && cNext < maze[0].length
-				&& maze[rNext][cNext] == CLEAR && !visited[rNext][cNext]) {
-					rows.add(rNext);
-					columns.add(cNext);
-					if(i == 0) direction = "Down";
-					else if(i == 1) direction = "Up";
-					else if(i == 2) direction = "Left";
-					else direction = "Right"; // i = 3
-					
-					ArrayList<String> newSteps = new ArrayList<>();
-					for(int j = 0; j < previous.size(); j++) {
-						newSteps.add(previous.get(j));
-					} 
-					
-					//ArrayLists have references, not pointers
-					
-					newSteps.add(direction);
-					stepSet.add(newSteps);
-					
-				}
-			}
-			
+    	while(rows.size() > 0 && columns.size() > 0) {
+		int row = rows.remove(0);
+		int col = columns.remove(0);
+        	visited[row][col] = true;
+		ArrayList<String> previous = new ArrayList<>();
+		ArrayList<String> threshold = stepSet.remove(0);
+		for(int i = 0; i < threshold.size(); i++) {
+			previous.add(threshold.get(i));
 		}
-		System.out.println("Path not found");
+		if(row == endRow && col == endCol) {
+			System.out.println(previous);
+			return;
+		}
+		for(int i = 0; i < rowDir.length; i++) {
+			String direction = ""; 
+			int rNext = row + rowDir[i];
+			int cNext = col + colDir[i];
+			if(rNext >= 0 && rNext < maze.length && cNext >= 0 && cNext < maze[0].length
+			&& maze[rNext][cNext] == CLEAR && !visited[rNext][cNext]) {
+				rows.add(rNext);
+				columns.add(cNext);
+				if(i == 0) direction = "Down";
+				else if(i == 1) direction = "Up";
+				else if(i == 2) direction = "Left";
+				else direction = "Right"; // i = 3
+					
+				ArrayList<String> newSteps = new ArrayList<>();
+				for(int j = 0; j < previous.size(); j++) {
+					newSteps.add(previous.get(j));
+			} 
+					
+				//ArrayLists have references, not pointers
+					
+				newSteps.add(direction);
+				stepSet.add(newSteps);
+					
+			}
+		}
+			
 	}
+	System.out.println("Path not found");
+}
 
